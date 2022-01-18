@@ -13,8 +13,6 @@ class JuniorEnterpriseController extends Controller
     function index() {
         try {
             return new JuniorEnterpriseCollection(JuniorEnterprise::with('core:id,name')->get());
-            return response()->json($juniorEnteprises, 200);
-
         } catch (\Exception $e) {
             return response()->json([
                 'error_message' => $e->getMessage(),
@@ -35,7 +33,9 @@ class JuniorEnterpriseController extends Controller
             $juniorEnteprise->save();
 
             return response()->json([
-                'success_message' => 'Junior Enterprise created',
+                'data' => [
+                    'success_message' => 'Junior Enterprise created',
+                ]
             ], 201);
 
         } catch (\Exception $e) {
@@ -66,9 +66,28 @@ class JuniorEnterpriseController extends Controller
             $juniorEnterprise->save();
 
             return response()->json([
-                'success_message' => 'Junior Enterprise updated',
+                'data' => [
+                    'success_message' => 'Junior Enterprise updated',
+                ]
             ], 202);
 
+        } catch (\Exception $e) {
+            return response()->json([
+                'error_message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function destroy($id) {
+        try {
+            $juniorEnterprise = JuniorEnterprise::findOrFail($id);
+            $juniorEnterprise->delete();
+
+            return response()->json([
+                'data' => [
+                    'success_message' => 'Junior Enterprise deleted',
+                ]
+            ], 202);
         } catch (\Exception $e) {
             return response()->json([
                 'error_message' => $e->getMessage(),

@@ -11,7 +11,7 @@ class CoreController extends Controller
         try {
             $cores = Core::all();
 
-            return response()->json($cores, 200);
+            return response()->json(['data' => $cores], 200);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -29,7 +29,9 @@ class CoreController extends Controller
             $core->save();
 
             return response()->json([
-                'success_message' => 'Core created',
+                'data' => [
+                    'success_message' => 'Core created',
+                ]
             ], 201);
 
         } catch (\Exception $e) {
@@ -41,7 +43,7 @@ class CoreController extends Controller
 
     function show(Core $core) {
         try {
-            return response()->json($core, 200);
+            return response()->json(['data' => $core],200);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -58,7 +60,9 @@ class CoreController extends Controller
             $core->save();
 
             return response()->json([
-                'success_message' => 'Core updated',
+                'data' => [
+                    'success_message' => 'Core updated',
+                ]
             ], 202);
 
         } catch (\Exception $e) {
@@ -73,7 +77,9 @@ class CoreController extends Controller
             $core->delete();
 
             return response()->json([
-                'success_message' => 'Core deleted',
+                'data' => [
+                    'success_message' => 'Core deleted',
+                ]
             ], 202);
         } catch (\Exception $e) {
             return response()->json([
