@@ -12,7 +12,7 @@ class JuniorEnterpriseController extends Controller
 {
     function index() {
         try {
-            return new JuniorEnterpriseCollection(JuniorEnterprise::with('core:id,name')->get());
+            return new JuniorEnterpriseCollection(JuniorEnterprise::with('core:id,name,backgroundColor,color')->get());
         } catch (\Exception $e) {
             return response()->json([
                 'error_message' => $e->getMessage(),
@@ -47,7 +47,7 @@ class JuniorEnterpriseController extends Controller
 
     function show($id) {
         try {
-            return new JuniorEnterpriseResource(JuniorEnterprise::with('core:id,name')->find($id));
+            return new JuniorEnterpriseResource(JuniorEnterprise::with('core:id,name,backgroundColor,color')->find($id));
 
         } catch (\Exception $e) {
             return response()->json([
@@ -58,7 +58,7 @@ class JuniorEnterpriseController extends Controller
 
     function update(Request $request, $id) {
         try {
-            $juniorEnterprise = JuniorEnterprise::with('core:id,name')->find($id);
+            $juniorEnterprise = JuniorEnterprise::with('core:id,name,backgroundColor,color')->find($id);
 
             $juniorEnterprise->name = $request->name;
             $juniorEnterprise->logo = $request->logo;

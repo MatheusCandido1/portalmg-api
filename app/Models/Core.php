@@ -21,6 +21,9 @@ class Core extends Model
 
     protected $fillable = [
         'name',
+        'fullname',
+        'backgroundColor',
+        'color',
         'logo'
     ];
 

@@ -17,6 +17,9 @@ class CreateCoresTable extends Migration
         Schema::create('cores', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('fullname');
+            $table->string('backgroundColor');
+            $table->string('color');
             $table->string('logo')->nullable();
             $table->timestamps();
         });
