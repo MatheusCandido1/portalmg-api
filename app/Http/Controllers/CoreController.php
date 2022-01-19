@@ -7,6 +7,18 @@ use App\Models\Core;
 
 class CoreController extends Controller
 {
+    /**
+     *
+     * @OA\Get (
+     *     path="/cores",
+     *     tags={"Cores"},
+     *     summary="Returns a list of cores.",
+     *     @OA\Response(
+     *      response=200,
+     *      description="Successul Operation",
+     *     )
+     * )
+     */
     function index() {
         try {
             $cores = Core::all();

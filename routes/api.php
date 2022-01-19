@@ -15,6 +15,8 @@ use App\Http\Controllers\JuniorEnterpriseController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
 Route::prefix('v1')->group(function () {
 
     // Cores

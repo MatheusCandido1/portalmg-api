@@ -18,7 +18,7 @@ class JuniorEnterpriseSeeder extends Seeder
         $core = Core::where('name', 'Triângulo')->first();
 
         JuniorEnterprise::create([
-            'name' => 'InfoAlto Empresa Júnior',
+            'name' => 'Concreta - Soluções em Engenharia',
             'logo' => 'https://uploads.brasiljunior.org.br/uploads/ej/image/1038/15873453_1205382942848632_4776490536798662294_n.png',
             'core_id' => $core->id,
         ]);

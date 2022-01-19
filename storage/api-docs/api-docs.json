@@ -1,0 +1,41 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portal MG API",
+        "description": "This is a sample server of PortalMG server.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/cores": {
+            "get": {
+                "tags": [
+                    "Cores"
+                ],
+                "summary": "Returns a list of cores.",
+                "operationId": "a94faa7d9d7f979585d38aeaa017c080",
+                "responses": {
+                    "200": {
+                        "description": "Successul Operation"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cores"
+        },
+        {
+            "name": "Junior Enterprises"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
