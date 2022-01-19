@@ -10,9 +10,15 @@ use App\Http\Resources\JuniorEnterpriseCollection;
 
 class JuniorEnterpriseController extends Controller
 {
-    function index() {
+    function index(Request $request) {
         try {
-            return new JuniorEnterpriseCollection(JuniorEnterprise::with('core:id,name,backgroundColor,color')->get());
+            $orderBy = $request->query('orderBy');
+
+            return new JuniorEnterpriseCollection(
+                JuniorEnterprise::with('core:id,name,backgroundColor,color')
+                ->orderBy('name', $orderBy)
+                ->get()
+            );
         } catch (\Exception $e) {
             return response()->json([
                 'error_message' => $e->getMessage(),
