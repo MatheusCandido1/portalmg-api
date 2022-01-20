@@ -17,7 +17,7 @@ class JuniorEnterpriseController extends Controller
             return new JuniorEnterpriseCollection(
                 JuniorEnterprise::with('core:id,name,backgroundColor,color')
                 ->orderBy('name', $orderBy)
-                ->get()
+                ->paginate(6)
             );
         } catch (\Exception $e) {
             return response()->json([
