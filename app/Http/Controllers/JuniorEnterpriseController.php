@@ -34,7 +34,16 @@ class JuniorEnterpriseController extends Controller
             $juniorEnteprise->logo = $request->logo;
 
             $core = Core::find($request->core_id);
-            $juniorEnteprise->core()->associate($core);
+
+            if($core) {
+                $juniorEnteprise->core()->associate($core);
+            } else {
+                return response()->json([
+                    'data' => [
+                        'error_message' => 'Core not found',
+                    ]
+                ], 404);
+            }
 
             $juniorEnteprise->save();
 
